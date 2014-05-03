@@ -1,0 +1,9 @@
+0.0.2 / 2014-05-02
+
+* Enhancements
+
+  * Insert#deallocate in case you can't wait until the end of the database session
+
+0.0.1 / 2014-05-02
+
+initial release!

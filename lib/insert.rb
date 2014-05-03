@@ -11,11 +11,20 @@ class Insert
   end
 
   def insert(quoted_table_name, attrs)
+    raise "can't insert if already deallocated!" if @deallocated
     attrs = attrs.map do |k, v|
       [ k.to_s, v ]
     end.sort_by { |k, _| k }
     attrs = Hash[attrs]
     connection.exec_prepared statement_for(quoted_table_name, attrs.keys), attrs.values
+  end
+
+  def deallocate
+    raise "can't deallocate if already deallocated!" if @deallocated
+    @deallocated = true
+    @statements.each do |_, name|
+      connection.exec "DEALLOCATE #{name}"
+    end
   end
 
   private

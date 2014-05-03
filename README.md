@@ -1,6 +1,10 @@
 # Insert
 
-Super simple way to insert rows into a database
+Super simple way to insert rows into a database.
+
+Currently only supports postgres.
+
+Currently uses prepared statements.
 
 ## Installation
 
