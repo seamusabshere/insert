@@ -1,6 +1,6 @@
 # Insert
 
-TODO: Write a gem description
+Super simple way to insert rows into a database
 
 ## Installation
 
@@ -18,7 +18,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+insert = Insert.new pg_connection_object
+insert.insert :dogs, name: 'jerry'
+```
 
 ## Contributing
 
