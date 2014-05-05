@@ -35,7 +35,11 @@ class Insert
       quoted_cols = cols.map { |col| connection.quote_ident col }
       bind_params = cols.length.times.map { |i| "$#{i+1}" }
       statement = %{INSERT INTO #{quoted_table_name} (#{quoted_cols.join(',')}) VALUES (#{bind_params.join(',')})}
-      connection.prepare name, statement
+      begin
+        connection.prepare name, statement
+      rescue PG::DuplicatePstatement
+        # noop
+      end
       name
     end
   end
