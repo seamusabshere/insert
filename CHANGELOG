@@ -1,3 +1,9 @@
+0.0.3 / 2014-05-05
+
+* Enhancements
+
+  * Automatically re-use prepared statements on same connection
+
 0.0.2 / 2014-05-02
 
 * Enhancements
